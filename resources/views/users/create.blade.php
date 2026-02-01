@@ -2,36 +2,64 @@
 
 @section('content')
 
-<h3>Create User</h3>
+<div class="row justify-content-center">
+    <div class="col-md-6">
 
-@if ($errors->any())
-    <ul style="color:red;">
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-@endif
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h5 class="mb-0">Create User</h5>
+            </div>
 
-<form method="POST" action="{{ route('users.store') }}">
-    @csrf
+            <div class="card-body">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
 
-    <p>
-        <label>Name</label><br>
-        <input type="text" name="name" value="{{ old('name') }}">
-    </p>
+                <form method="POST" action="{{ route('users.store') }}">
+                    @csrf
 
-    <p>
-        <label>Email</label><br>
-        <input type="email" name="email" value="{{ old('email') }}">
-    </p>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text"
+                            name="name"
+                            class="form-control"
+                            value="{{ old('name') }}">
+                    </div>
 
-    <p>
-        <label>Password</label><br>
-        <input type="password" name="password">
-    </p>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email"
+                            name="email"
+                            class="form-control"
+                            value="{{ old('email') }}">
+                    </div>
 
-    <button type="submit">Save</button>
-    <a href="{{ route('users.index') }}">Cancel</a>
-</form>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password"
+                            name="password"
+                            class="form-control">
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ route('users.index') }}" class="btn btn-secondary">
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            Save User
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 @endsection

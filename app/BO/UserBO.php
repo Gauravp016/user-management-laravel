@@ -3,6 +3,7 @@
 namespace App\BO;
 
 use App\DAO\UserDAO;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserBO
@@ -30,5 +31,10 @@ class UserBO
     public function updateUser($user, array $data)
     {
         return $this->userDAO->updateUser($user, $data);
+    }
+
+    public function deleteUser(User $user)
+    {
+        return $this->userDAO->deleteUser($user);
     }
 }

@@ -1,23 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
     <title>User Management</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
 
-    <h2 style="text-align:center">User Management System</h2>
-    <hr>
+<body class="bg-light">
 
-    @if(session('success'))
-        <p style="color:green; text-align:center;">
+    <nav class="navbar navbar-dark bg-dark mb-4">
+        <div class="container">
+            <span class="navbar-brand mx-auto mb-0 h1">
+                User Management System
+            </span>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show">
             {{ session('success') }}
-        </p>
-    @endif
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        @endif
 
-    <div style="width:60%; margin:auto;">
         @yield('content')
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

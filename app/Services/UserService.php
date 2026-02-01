@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\BO\UserBO;
+use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 
 class UserService
@@ -31,5 +32,12 @@ class UserService
     {
         Cache::forget('users_cache');
         return $this->userBO->updateUser($user, $data);
+    }
+
+    public function deleteUser(User $user)
+    {
+        Cache::forget('users_cache');
+
+        return $this->userBO->deleteUser($user);
     }
 }

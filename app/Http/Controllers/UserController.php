@@ -64,5 +64,15 @@ class UserController extends Controller
             ->with('success', 'User updated successfully');
     }
 
+    /**
+     * Delete user
+     */
+    public function destroy(User $user)
+    {
+        $this->userService->deleteUser($user);
+
+        return redirect('/users')
+            ->with('success', 'User deleted successfully');
+    }
 
 }

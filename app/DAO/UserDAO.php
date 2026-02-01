@@ -21,4 +21,9 @@ class UserDAO
         $user->update($data);
         return $user;
     }
+
+    public function deleteUser(User $user)
+    {
+        return $user->delete();
+    }
 }
